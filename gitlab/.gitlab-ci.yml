@@ -1,0 +1,13 @@
+build:android:debug:
+  stage: build
+  script:
+    - flutter upgrade
+    - flutter clean
+    - flutter packages upgrade
+    - flutter -v build apk --debug
+    
+  artifacts:
+    name: "${CI_PROJECT_NAMESPACE}_${CI_PROJECT_NAME}_${CI_COMMIT_REF_NAME}"
+    paths:
+      - build/app/outputs/apk/debug
+    expire_in: 4 weeks
